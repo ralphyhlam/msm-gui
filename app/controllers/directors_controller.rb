@@ -49,8 +49,8 @@ class DirectorsController < ApplicationController
   end
 
   def mod_director
-    d_id = params.fetch("path_id")
-    @find_director = Director.where({ :id => d_id })
+    @d_id = params.fetch("path_id")
+    @find_director = Director.where({ :id => @d_id })
     @director_target = @find_director.at(0)
     @director_target.name = params.fetch("mod_director_name")
     @director_target.dob = params.fetch("mod_director_dob")
@@ -58,6 +58,16 @@ class DirectorsController < ApplicationController
     @director_target.image = params.fetch("mod_director_image")
     @director_target.save
 
+    redirect_to("/directors/#{@d_id}")
+  end
+
+  def delete
+    d_id = params.fetch("path_id")
+    delete_target = Director.where({:id => d_id})
+    delete_director = delete_target.at(0)
+    delete_director.destroy
+
     redirect_to("/directors")
   end
+
 end

@@ -2,6 +2,20 @@
   Director #<%= @the_director.id %> details
 </h1>
 
+<div>
+<a href="/directors">
+  Go back
+</a>
+</div>
+
+<div>
+<a href="/delete_director/<%= @the_director.id %>">
+  Delete director
+</a>
+</div>
+
+<hr>
+
 
 <form action="/modify_director/<%= @the_director.id %>" method="post">
   <div>
@@ -26,14 +40,6 @@
 
   <button>Update director</button>
 </form>
-
-
-
-<a href="/directors">
-  Go back
-</a>
-
-<hr>
 
 <dl>
   <dt>

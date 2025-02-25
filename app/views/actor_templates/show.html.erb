@@ -6,6 +6,36 @@
   Go back
 </a>
 
+<div>
+<a href="/delete_actor/<%=@the_actor.id%>">
+  Delete actor
+</a>
+</div>
+
+<form action="/modify_actor/<%= @the_actor.id %>" method="post">
+  <div>
+  <label for="actor_name">Name</label>
+  <input id="actor_name" name="mod_actor_name" value= <%=@the_actor.name%>>
+  </div>
+
+  <div>
+  <label for="actor_dob">Dob</label>
+  <input type ="date" id="actor_dob" name="mod_actor_dob">
+  </div>
+  
+  <div>
+  <label for="actor_bio">Bio</label>
+  <textarea id="actor_bio" name="mod_actor_bio" rows="3"><%=@the_actor.bio%></textarea>
+  </div>
+
+  <div>
+  <label for="actor_image">Image</label>
+  <input id="actor_image" name="mod_actor_image" value= <%=@the_actor.image%>>
+  </div>
+
+  <button>Update actor</button>
+</form>
+
 <hr>
 
 <dl>
@@ -99,11 +129,10 @@
       </td>
 
       <td>
-        <% d_id = the_movie.director_id %>
         
-        <% matching_directors = Director.where({ :id => d_id }) %>
+        <% matching_director = Director.where({ :id => the_movie.director_id }) %>
         
-        <% the_director = matching_directors.at(0) %>
+        <% the_director = matching_director.at(0) %>
 
         <%= the_director.name %>
       </td>
