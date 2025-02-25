@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  #all GET requests
   get("/", { :controller => "misc", :action => "homepage" })
 
   get("/directors/youngest", { :controller => "directors", :action => "max_dob" })
@@ -12,4 +14,10 @@ Rails.application.routes.draw do
   
   get("/actors", { :controller => "actors", :action => "index" })
   get("/actors/:path_id", { :controller => "actors", :action => "show" })
+
+
+    #all POST requests
+
+    post("/add_director", { :controller => "directors", :action => "new_director"})
+    post("/modify_director/:path_id", {:controller => "directors", :action => "mod_director"})
 end

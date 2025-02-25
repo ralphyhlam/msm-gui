@@ -2,6 +2,33 @@
   Director #<%= @the_director.id %> details
 </h1>
 
+
+<form action="/modify_director/<%= @the_director.id %>" method="post">
+  <div>
+  <label for="director_name">Name</label>
+  <input id="director_name" name="mod_director_name" value= <%=@the_director.name%>>
+  </div>
+
+  <div>
+  <label for="director_dob">Dob</label>
+  <input type ="date" id="director_dob" name="mod_director_dob">
+  </div>
+  
+  <div>
+  <label for="director_bio">Bio</label>
+  <textarea id="director_bio" name="mod_director_bio" rows="3"><%=@the_director.bio%></textarea>
+  </div>
+
+  <div>
+  <label for="director_image">Image</label>
+  <input id="director_image" name="mod_director_image" value= <%=@the_director.image%>>
+  </div>
+
+  <button>Update director</button>
+</form>
+
+
+
 <a href="/directors">
   Go back
 </a>
